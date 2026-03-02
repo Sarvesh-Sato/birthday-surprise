@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Cholu 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      background: #000;
+      color: white;
+    }
+
+    /* ===== COLLAGE BACKGROUND ===== */
+    .collage {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-auto-rows: 50vh;
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .collage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+      filter: brightness(0.45) saturate(1.2);
+      animation: float 12s ease-in-out infinite;
+      transition: all .6s ease;
+    }
+
+    .collage img:hover {
+      transform: scale(1.08) rotate(2deg);
+      filter: brightness(0.7);
+      box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+    }
+
+    /* random delays */
+    .collage img:nth-child(odd) {
+      animation-delay: 2s;
+    }
+
+    .collage img:nth-child(3n) {
+      animation-delay: 4s;
+    }
+
+    .collage img:nth-child(4n) {
+      animation-delay: 6s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    /* dark overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,.75), rgba(0,0,0,.85));
+      z-index: -1;
+    }
+
+    /* ===== SPARKLE EFFECT ===== */
+    .sparkle {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      animation: sparkleAnim 1.5s ease-out forwards;
+    }
+
+    @keyframes sparkleAnim {
+      0% {
+        opacity: 1;
+        transform: scale(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0);
+      }
+    }
+
+    /* ===== CENTER CARD ===== */
+    .container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 28px;
+      padding: 45px;
+      max-width: 900px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 182, 193, 0.1),
+        transparent
+      );
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+      }
+      100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 64px;
+      margin-bottom: 30px;
+      background: linear-gradient(45deg, #ff9ecf, #ffb6d9, #ff69b4, #ffc0cb);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
+      text-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+    }
+
+    @keyframes gradientShift {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .letter {
+      font-size: 18px;
+      line-height: 1.9;
+      white-space: pre-line;
+      position: relative;
+      z-index: 1;
+      text-align: left;
+      max-height: 70vh;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
+    .letter::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .letter::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .letter::-webkit-scrollbar-thumb {
+      background: rgba(255, 105, 180, 0.5);
+      border-radius: 10px;
+    }
+
+    .letter::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 105, 180, 0.7);
+    }
+
+    /* ===== COUNTDOWN ===== */
+    #countdownBox {
+      text-align: center;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 28px;
+      padding: 60px 45px;
+      max-width: 600px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 2s ease, pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.02);
+      }
+    }
+
+    .count-title {
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #ffd6ec;
+      text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+    }
+
+    #countdown {
+      font-size: 48px;
+      font-weight: 600;
+      background: linear-gradient(45deg, #ff9ecf, #ffb6d9, #ff69b4);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 2s ease infinite;
+      letter-spacing: 3px;
+    }
+
+    /* ===== FLOATING ICONS ===== */
+    .float {
+      position: fixed;
+      font-size: 26px;
+      animation: rise linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes rise {
+      from {
+        transform: translateY(100vh) scale(.6) rotate(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh) scale(1.3) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* ===== HEARTS BACKGROUND ===== */
+    .heart-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0.15;
+      animation: floatHeart 15s infinite ease-in-out;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.15;
+      }
+      90% {
+        opacity: 0.15;
+      }
+      100% {
+        transform: translateY(-100px) rotate(180deg);
+        opacity: 0;
+      }
+    }
+
+    /* ===== MUSIC CONTROL BUTTON ===== */
+    .music-control {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 105, 180, 0.8);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+    }
+
+    .music-control:hover {
+      transform: scale(1.1);
+      background: rgba(255, 105, 180, 1);
+      box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6);
+    }
+
+    .music-control.active {
+      display: flex;
+    }
+
+    /* ===== GALLERY BUTTON ===== */
+    .gallery-btn {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 182, 193, 0.8);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(255, 182, 193, 0.4);
+    }
+
+    .gallery-btn:hover {
+      transform: scale(1.1);
+      background: rgba(255, 182, 193, 1);
+      box-shadow: 0 8px 30px rgba(255, 182, 193, 0.6);
+    }
+
+    .gallery-btn.active {
+      display: flex;
+    }
+
+    /* ===== IMAGE GALLERY MODAL ===== */
+    .gallery-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .gallery-modal.active {
+      display: flex;
+    }
+
+    .gallery-content {
+      max-width: 90%;
+      max-height: 90%;
+      position: relative;
+    }
+
+    .gallery-image {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+    }
+
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .gallery-nav:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .gallery-prev {
+      left: -70px;
+    }
+
+    .gallery-next {
+      right: -70px;
+    }
+
+    .gallery-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .gallery-close:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.1);
+    }
+
+    .gallery-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .gallery-thumbnails {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      overflow-x: auto;
+      padding: 10px;
+      justify-content: center;
+    }
+
+    .gallery-thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .gallery-thumbnail:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .gallery-thumbnail.active {
+      opacity: 1;
+      border: 2px solid #ff69b4;
+    }
+
+    /* ===== GIFT CARD SECTION ===== */
+    .gift-section {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .gift-reveal-btn {
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      color: white;
+      border: none;
+      padding: 18px 40px;
+      font-size: 20px;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+      transition: all 0.3s ease;
+      animation: giftPulse 2s infinite;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .gift-reveal-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 105, 180, 0.6);
+    }
+
+    @keyframes giftPulse {
+      0%, 100% {
+        box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+      }
+      50% {
+        box-shadow: 0 15px 40px rgba(255, 105, 180, 0.7);
+      }
+    }
+
+    .gift-card-container {
+      display: none;
+      margin-top: 30px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .gift-card-container.active {
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .gift-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
+    }
+
+    .gift-card-image {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .gift-card-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: white;
+      text-align: left;
+      background: rgba(255, 105, 180, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 105, 180, 0.3);
+    }
+
+    .gift-card-number {
+      font-weight: 600;
+      color: #ffd6ec;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    .gift-card-link {
+      color: #ff9ecf;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .gift-card-link:hover {
+      color: #ffb6d9;
+      text-decoration: underline;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .title {
+        font-size: 48px;
+      }
+
+      .letter {
+        font-size: 16px;
+      }
+
+      .count-title {
+        font-size: 24px;
+      }
+
+      #countdown {
+        font-size: 36px;
+      }
+
+      .collage {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 20vh;
+      }
+
+      .card {
+        padding: 30px;
+      }
+
+      .music-control {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .gallery-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        bottom: 80px;
+        right: 20px;
+      }
+
+      .gallery-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+
+      .gallery-prev {
+        left: 10px;
+      }
+
+      .gallery-next {
+        right: 10px;
+      }
+
+      .gallery-close {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+
+      .gift-reveal-btn {
+        font-size: 18px;
+        padding: 15px 30px;
+      }
+
+      .gift-card {
+        padding: 20px;
+      }
+
+      .gift-card-text {
+        font-size: 14px;
+        padding: 15px;
+      }
+
+      .gift-card-number {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- COLLAGE -->
+  <div class="collage">
+    <img src="photo1.jpg" alt="Memory 1">
+    <img src="photo2.jpg" alt="Memory 2">
+    <img src="photo3.jpg" alt="Memory 3">
+    <img src="photo4.jpg" alt="Memory 4">
+    <img src="photo5.jpg" alt="Memory 5">
+    <img src="photo6.jpg" alt="Memory 6">
+    <img src="photo7.jpg" alt="Memory 7">
+    <img src="photo8.jpg" alt="Memory 8">
+    <img src="photo9.jpg" alt="Memory 9">
+    <img src="photo10.jpg" alt="Memory 10">
+  </div>
+
+  <div class="overlay"></div>
+
+  <!-- FLOATING HEARTS BACKGROUND -->
+  <div class="heart-bg" id="heartBg"></div>
+
+  <!-- BACKGROUND MUSIC -->
+  <audio id="birthdayMusic" loop>
+    <source src="birthday-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- MUSIC CONTROL BUTTON -->
+  <button class="music-control" id="musicControl" title="Toggle music">
+    🎵
+  </button>
+
+  <!-- GALLERY BUTTON -->
+  <button class="gallery-btn" id="galleryBtn" title="View our memories">
+    📸
+  </button>
+
+  <!-- IMAGE GALLERY MODAL -->
+  <div class="gallery-modal" id="galleryModal">
+    <div class="gallery-content">
+      <img class="gallery-image" id="galleryImage" src="" alt="Memory">
+      <button class="gallery-nav gallery-prev" id="galleryPrev">←</button>
+      <button class="gallery-nav gallery-next" id="galleryNext">→</button>
+      <button class="gallery-close" id="galleryClose">×</button>
+      <div class="gallery-counter" id="galleryCounter">1 / 10</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- COUNTDOWN -->
+    <div id="countdownBox">
+      <div class="count-title">⏳ Unlocking your surprise in</div>
+      <div id="countdown"></div>
+    </div>
+
+    <!-- LETTER -->
+    <div class="card" id="letterBox" style="display:none;">
+      <div class="title">Happy Birthday, Cholu 💖</div>
+      <div class="letter">
+If our relationship were a TV show, it would definitely be legend—wait for it—dary, with a little bit of Friends-level chaos, Game of Thrones-level loyalty (don't worry, I promise no Red Wedding surprises 😌), and the vibes of The Summer I Turned Pretty.
+
+From smashing shuttlecocks on the badminton court to trying not to fall (too gracefully) while ice skating… from hopping around food places to our intense debates about pizza vs burger (you're still wrong, by the way 😉)… every moment with you has been my favorite episode.
+
+You're the Monica to my Chandler, the Robin to my Ted, and honestly… sometimes you're my Ygritte reminding me, "You know nothing." And just like in How to Lose a Guy in 10 Days, somehow you've managed to keep me completely hooked — zero days needed. 🫣❤️
+
+But jokes apart…
+
+You are one of the strongest, smartest, most independent boss ladies I know. The way you handle life, chase your goals, and still make time to laugh with me — it honestly amazes me every single day. You're not just my favorite person to hang out with… you're someone I genuinely admire.
+
+On your birthday, I just want you to know:
+
+you = 10/10 would binge again.
+
+Stay amazing, keep stealing my fries, keep winning at life like the boss you are… and let's keep making memories that even Barney Stinson would approve of.
+
+Happy Muskan Day🥳
+      </div>
+
+      <!-- GIFT CARD SECTION -->
+      <div class="gift-section">
+        <button class="gift-reveal-btn" id="giftRevealBtn">
+          🎁 Get Your Gift 🎁
+        </button>
+        
+        <div class="gift-card-container" id="giftCardContainer">
+          <div class="gift-card">
+            <img src="photo11.png" alt="Nykaa Gift Card" class="gift-card-image">
+            <div class="gift-card-text">
+              <strong>Sarvesh</strong> has sent you a <strong>Nykaa Gift card of Rs. 1,000</strong> with a message <em>"Celebrate yourself today - and always. Happy birthday"</em>. 
+              <br><br>
+              The gift card number is <span class="gift-card-number">6002940040901251</span>. 
+              <br><br>
+              The gift card pin, to be used while placing an order, is <span class="gift-card-number">155477</span>. 
+              <br><br>
+              To redeem your Gift Card visit <a href="https://www.nykaa.com" target="_blank" class="gift-card-link">https://www.nykaa.com</a>. 
+              <br><br>
+              Check TnCs at <a href="https://nykaa.co/INYKAA/Liha" target="_blank" class="gift-card-link">https://nykaa.co/INYKAA/Liha</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== GET ALL ELEMENTS =====
+    const birthdayDate = new Date("March 3, 2026 00:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+    const letterBox = document.getElementById("letterBox");
+    const countdownBox = document.getElementById("countdownBox");
+    const galleryBtn = document.getElementById("galleryBtn");
+    const musicControl = document.getElementById('musicControl');
+    let isMusicPlaying = false;
+
+    // ===== FLOATING EMOJIS =====
+    function startFloating() {
+      const icons = ["❤️", "🎁", "🎉", "🎂", "💖", "✨", "🎈", "🌟", "💝", "🎊"];
+      setInterval(() => {
+        const el = document.createElement("div");
+        el.className = "float";
+        el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.animationDuration = (6 + Math.random() * 6) + "s";
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 12000);
+      }, 500);
+    }
+
+    // ===== FLOATING HEARTS BACKGROUND =====
+    function createHearts() {
+      const heartBg = document.getElementById('heartBg');
+      for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.className = 'heart';
+          heart.innerHTML = '💖';
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.animationDelay = Math.random() * 5 + 's';
+          heart.style.fontSize = (15 + Math.random() * 15) + 'px';
+          heartBg.appendChild(heart);
+        }, i * 200);
+      }
+    }
+
+    // ===== SPARKLE ON MOUSE MOVE =====
+    document.addEventListener('mousemove', (e) => {
+      if (letterBox.style.display !== 'none') {
+        if (Math.random() > 0.8) {
+          createSparkle(e.clientX, e.clientY);
+        }
+      }
+    });
+
+    function createSparkle(x, y) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = x + 'px';
+      sparkle.style.top = y + 'px';
+      sparkle.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1500);
+    }
+
+    // ===== MUSIC PLAYER =====
+    function playMusic() {
+      const music = document.getElementById('birthdayMusic');
+      musicControl.classList.add('active');
+      
+      music.play().then(() => {
+        isMusicPlaying = true;
+        musicControl.innerHTML = '🎵';
+      }).catch(err => {
+        console.log('Music autoplay was blocked. Click the music button to start.');
+        musicControl.innerHTML = '🔇';
+      });
+    }
+
+    // Toggle music on button click
+    musicControl.addEventListener('click', () => {
+      const music = document.getElementById('birthdayMusic');
+      if (isMusicPlaying) {
+        music.pause();
+        musicControl.innerHTML = '🔇';
+        isMusicPlaying = false;
+      } else {
+        music.play();
+        musicControl.innerHTML = '🎵';
+        isMusicPlaying = true;
+      }
+    });
+
+    // ===== CLICK EFFECT =====
+    document.addEventListener('click', (e) => {
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          createSparkle(
+            e.clientX + (Math.random() - 0.5) * 50,
+            e.clientY + (Math.random() - 0.5) * 50
+          );
+        }, i * 50);
+      }
+    });
+
+    // ===== IMAGE GALLERY =====
+    const photos = [
+      'photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo4.jpg', 'photo5.jpg',
+      'photo6.jpg', 'photo7.jpg', 'photo8.jpg', 'photo9.jpg', 'photo10.jpg'
+    ];
+    let currentPhotoIndex = 0;
+
+    const galleryModal = document.getElementById('galleryModal');
+    const galleryImage = document.getElementById('galleryImage');
+    const galleryCounter = document.getElementById('galleryCounter');
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
+    const galleryClose = document.getElementById('galleryClose');
+
+    function showGallery(index) {
+      currentPhotoIndex = index;
+      galleryImage.src = photos[currentPhotoIndex];
+      galleryCounter.textContent = `${currentPhotoIndex + 1} / ${photos.length}`;
+      galleryModal.classList.add('active');
+    }
+
+    function hideGallery() {
+      galleryModal.classList.remove('active');
+    }
+
+    function showNextPhoto() {
+      currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+      showGallery(currentPhotoIndex);
+    }
+
+    function showPrevPhoto() {
+      currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+      showGallery(currentPhotoIndex);
+    }
+
+    // Gallery button click
+    galleryBtn.addEventListener('click', () => showGallery(0));
+
+    // Navigation buttons
+    galleryNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showNextPhoto();
+    });
+
+    galleryPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showPrevPhoto();
+    });
+
+    galleryClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      hideGallery();
+    });
+
+    // Close gallery on background click
+    galleryModal.addEventListener('click', (e) => {
+      if (e.target === galleryModal) {
+        hideGallery();
+      }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (galleryModal.classList.contains('active')) {
+        if (e.key === 'ArrowRight') showNextPhoto();
+        if (e.key === 'ArrowLeft') showPrevPhoto();
+        if (e.key === 'Escape') hideGallery();
+      }
+    });
+
+    // ===== COUNTDOWN LOGIC =====
+    // 🔓 SECRET DEVELOPER MODE - For testing after deployment
+    // METHOD 1: Open browser console and type: localStorage.setItem('shortcut', 'true')
+    // METHOD 2 (MOBILE-FRIENDLY): Add ?dev=true to URL
+    // Example: https://your-site.github.io/birthday-surprise/?dev=true
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlDevMode = urlParams.get('dev') === 'true';
+    const urlDevOff = urlParams.get('dev') === 'false';
+    const storageDevMode = localStorage.getItem('shortcut') === 'true';
+    
+    // If URL has dev=false, turn off developer mode
+    if (urlDevOff) {
+      localStorage.removeItem('shortcut');
+      console.log('🔒 Developer mode deactivated');
+    }
+    
+    // If URL has dev=true, save it to localStorage for future visits
+    if (urlDevMode) {
+      localStorage.setItem('shortcut', 'true');
+      console.log('🔓 Developer mode activated via URL parameter');
+    }
+    
+    const developerMode = urlDevMode || (storageDevMode && !urlDevOff);
+    
+    let targetDate;
+    const now = new Date().getTime();
+    
+    if (developerMode) {
+      // Developer mode: Skip countdown entirely
+      console.log('🔓 Developer mode activated - Skipping countdown');
+      targetDate = now - 1000; // Already passed
+    } else {
+      // Normal mode: Smart countdown logic
+      if (now >= birthdayDate) {
+        // Birthday has passed, show 10-second countdown
+        targetDate = now + 10000;
+      } else {
+        // Before birthday, show real countdown
+        targetDate = birthdayDate;
+      }
+    }
+
+    function showSurprise() {
+      countdownBox.style.display = "none";
+      letterBox.style.display = "block";
+      galleryBtn.classList.add("active");
+      startFloating();
+      createHearts();
+      playMusic();
+    }
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        showSurprise();
+        clearInterval(timer);
+        return;
+      }
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+    }
+
+    // If developer mode, show surprise immediately
+    if (developerMode) {
+      showSurprise();
+    } else {
+      const timer = setInterval(updateCountdown, 1000);
+      updateCountdown();
+    }
+
+    // ===== GIFT CARD REVEAL =====
+    const giftRevealBtn = document.getElementById('giftRevealBtn');
+    const giftCardContainer = document.getElementById('giftCardContainer');
+
+    giftRevealBtn.addEventListener('click', () => {
+      giftCardContainer.classList.add('active');
+      giftRevealBtn.style.display = 'none';
+      
+      // Scroll to gift card smoothly
+      setTimeout(() => {
+        giftCardContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+      
+      // Create extra sparkles for celebration
+      for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+          const x = Math.random() * window.innerWidth;
+          const y = Math.random() * window.innerHeight;
+          createSparkle(x, y);
+        }, i * 100);
+      }
+    });
+  </script>
+</body>
+</html>
